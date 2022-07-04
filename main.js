@@ -9,3 +9,13 @@ const taskSubmit = document.getElementById("task-submit")
 const taskList = document.getElementById("task-list")
 
 taskSubmit2.addEventListener('click')
+/**
+ * 
+ * @param {*} hoge 
+ * @returns 
+ */
+function hoge (hoge) {
+    return hoge + "hoge"
+}
+
+hoge()
