@@ -14,16 +14,16 @@ const taskList = document.getElementById("task-list")
 taskSubmit.addEventListener('click', addTask) // addTask() とするとボタンを押していないのに押した時の動きになってる
 
 function addTask() {
-    let taskListItem = document.createElement('li')
-        taskListItem.classList.add("task-list-item")
+    let taskListItem = document.createElement('li') // li要素生成
+        taskListItem.classList.add("task-list-item") // li要素にクラス名付与
         // taskListItem.id = "item-1"
 
-    let value =  document.getElementById("task-value").value
+    let value = taskValue.value // テキストボックスの値を取得
 
-    taskList.appendChild(taskListItem)
-    taskListItem.appendChild(document.createTextNode(value))
+    taskList.appendChild(taskListItem) // ul要素の子要素にliを追加
+    taskListItem.appendChild(document.createTextNode(value)) // テキストボックスの値をテキストノードに変換してliの子要素に追加
 
-    taskValue.value = ""
+    taskValue.value = "" // テキストボックスの値を元に戻す
 }
 
 
