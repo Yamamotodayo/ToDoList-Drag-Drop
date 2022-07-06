@@ -72,10 +72,17 @@ h1 {
     background: rgb(226, 105, 105);
 }
 
+.task-list-item p {
+    display: inline;
+    font-size: 20px;
+    margin: 0;
+}
+
 .task-list-deleteBtn {
     border-radius: 10px;
     border: none;
     font-size: 15px;
     width: 70px;
     height: 40px;
+    float: right;
 }
