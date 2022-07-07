@@ -62,7 +62,7 @@ h1 {
     background: rgb(135, 226, 230);
 }
 
-.task-list-item {
+.list-item {
     list-style: none;
     height: 50px;
     margin: 20px 0;
@@ -78,7 +78,7 @@ h1 {
     margin: 0;
 }
 
-.task-list-deleteBtn {
+.list-item-deleteBtn {
     border-radius: 10px;
     border: none;
     font-size: 15px;
