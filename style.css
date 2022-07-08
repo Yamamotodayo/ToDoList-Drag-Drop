@@ -72,7 +72,7 @@ h1 {
     background: rgb(226, 105, 105);
 }
 
-.task-list-item p {
+.list-item p {
     display: inline;
     font-size: 20px;
     margin: 0;

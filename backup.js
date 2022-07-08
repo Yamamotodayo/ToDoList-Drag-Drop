@@ -6,7 +6,7 @@
 
 const taskValue = document.getElementById("task-value")
 const taskSubmit = document.getElementById("task-submit")
-const taskList = document.getElementById("task-list")
+const ul = document.getElementById("task-list")
 
 
 const todos = JSON.parse(localStorage.getItem("todos"))
@@ -25,27 +25,27 @@ function addTask(todo) {
     
 
 
-    let taskListItem = document.createElement('li') // li要素生成
-        taskListItem.classList.add("task-list-item") // li要素にクラス名付与
+    let li = document.createElement('li') // li要素生成
+        li.classList.add("list-item") // li要素にクラス名付与
 
-        taskListItem.setAttribute('draggable', true)
+        li.setAttribute('draggable', true)
 
 
     let p = document.createElement('p')
 
     let deleteBtn = document.createElement('button') // button要素生成
-        deleteBtn.classList.add("task-list-deleteBtn") // button要素にクラス名付与
+        deleteBtn.classList.add("list-item-deleteBtn") // button要素にクラス名付与
         deleteBtn.append("削除")
-        // taskListItem.id = "item-1"
+        // li.id = "item-1"
 
     // let value = taskValue.value // テキストボックスの値を取得
         
 
-    taskList.appendChild(taskListItem) // ul要素の子要素にliを追加
+    ul.appendChild(li) // ul要素の子要素にliを追加
     p.appendChild(document.createTextNode(value))
 
-    taskListItem.appendChild(p) // テキストボックスの値をテキストノードに変換してliの子要素に追加
-    taskListItem.appendChild(deleteBtn) // li要素の子要素にbuttonを追加
+    li.appendChild(p) // テキストボックスの値をテキストノードに変換してliの子要素に追加
+    li.appendChild(deleteBtn) // li要素の子要素にbuttonを追加
 
     if(todo) {
         value = todo.text
