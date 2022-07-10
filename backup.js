@@ -1,9 +1,5 @@
 'use strict'
 
-// const taskValue = document.getElementsByClassName('task-value')[0]
-// const taskSubmit = document.getElementsByClassName('task-submit')[0]
-// const taskList = document.getElementsByClassName('task-list')[0]
-
 const taskValue = document.getElementById("task-value")
 const taskSubmit = document.getElementById("task-submit")
 const ul = document.getElementById("task-list")
@@ -17,15 +13,15 @@ if(todos) {
     })
 }
 
-taskSubmit.addEventListener('click', function(event) {  // addTask() とするとボタンを押していないのに押した時の動きになってる
-    event.preventDefault()
+taskSubmit.addEventListener('click', function(e) {  // addTask() とするとボタンを押していないのに押した時の動きになってる
+    e.preventDefault()
     addTask()
 })
 
 
 
 function addTask(todo) {
-
+    
     let value = taskValue.value // テキストボックスの値を取得
 
     if(todo) {
@@ -40,7 +36,7 @@ function addTask(todo) {
         // li.innerText = value
         li.classList.add("list-item") // li要素にクラス名付与
 
-        // li.setAttribute('draggable', true)
+        li.setAttribute('draggable', true)
 
     let p = document.createElement('p')
         p.appendChild(document.createTextNode(value))
@@ -80,31 +76,60 @@ function addTask(todo) {
 
         localStorage.setItem("todos", JSON.stringify(todos))
     }
-
-
-    // ドラッグ&ドロップ
-    // document.querySelectorAll(".task-list li").forEach (elm => {
-    //     elm.ondragstart = function() {
-    //         event.dataTransfer.setDate('text/plain', event.target.class)
-    //     }
-    //     elm.ondragover = function() {
-    //         event.preventDefault()
-    //         this.style.borderTop = '2px solid blue'
-    //     }
-    //     elm.ondragleave = function() {
-    //         this.style.borderTop = ''
-    //     }
-    //     elm.ondrop = function() {
-    //         event.preventDefault()
-    //         let id =event.dataTransfer.getData('text/plain')
-    //         let elm_drag = document.getElementById(id)
-    //         this.parentNode.insertBefore(elm_drag, this)
-    //         this.style.borderTop = ''
-    //     }
-    // })
-    
-
 }
+
+// ドラッグ&ドロップ
+
+//1.要素の取得
+const li = document.querySelector(".list-item")
+console.log(li);
+const uls = document.querySelectorAll("#task-list")
+console.log(uls);
+
+// 2.ドラッグのトリガー
+li.addEventListener("dragstart", dragStart)
+li.addEventListener("dragend", dragEnd)
+
+// 4.task-list要素を取得
+for(const li of uls) {
+    li.addEventListener("dragover", dragOver);
+    li.addEventListener("dragenter", dragEnter);
+    li.addEventListener("dragleave", dragLeave);
+    li.addEventListener("drop", dragDrop);
+}
+
+
+// 3.ドラッグ関数
+function dragStart() {
+    console.log("start");
+    li.className += " hold";
+    
+    setTimeout(() => {
+        li.className = " invisible"
+    }, 0);
+}
+
+function dragEnd() {
+    console.log("end");
+    li.className = "list-item";
+}
+
+function dragOver() {
+    console.log("over");
+}
+
+function dragEnter() {
+    console.log("over");
+}
+
+function dragLeave() {
+    console.log("over");
+}
+
+function dragDrop() {
+    console.log("over");
+}
+
 
 
 

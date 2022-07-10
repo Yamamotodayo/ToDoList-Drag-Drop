@@ -86,3 +86,12 @@ h1 {
     height: 40px;
     float: right;
 }
+
+
+.invisible {
+    display: none;
+}
+
+.hold {
+    border: 4px solid #ccc;
+}
