@@ -114,20 +114,25 @@ function dragEnd() {
     li.className = "list-item";
 }
 
-function dragOver() {
+function dragOver(e) {
+    e.preventDefault()
     console.log("over");
 }
 
 function dragEnter() {
-    console.log("over");
+    console.log("enter");
+    this.className += " hovered"
 }
 
 function dragLeave() {
-    console.log("over");
+    console.log("leave");
+    this.className = "task-list"
 }
 
 function dragDrop() {
-    console.log("over");
+    console.log("drop");
+    this.className = "task-list"
+    this.appendChild(li)
 }
 
 
