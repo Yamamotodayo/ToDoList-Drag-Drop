@@ -83,37 +83,66 @@ function addTask(todo) {
 // ドラッグ&ドロップ
 
 //1.要素の取得
-const li = document.querySelector(".list-item")
-console.log(li);
+const lis = document.querySelectorAll(".list-item")
+console.log(lis);
 const uls = document.querySelectorAll("#task-list")
 console.log(uls);
 
+const ul2 = document.querySelector("#task-list")
+
+uls.forEach((ul2) => {
+    new Sortable(ul2, {
+        group: "shared",
+        animation: 150,
+        ghostclass: 'blue-background-class'
+    })
+})
+
+
 // 2.ドラッグのトリガー
-li.addEventListener("dragstart", dragStart)
-li.addEventListener("dragend", dragEnd)
+// lis.addEventListener("dragstart", dragStart)
+// lis.addEventListener("dragend", dragEnd)
 
 // 4.task-list要素を取得
-for(const li of uls) {
-    li.addEventListener("dragover", dragOver);
-    li.addEventListener("dragenter", dragEnter);
-    li.addEventListener("dragleave", dragLeave);
-    li.addEventListener("drop", dragDrop);
-}
+// for(const lis of uls) {
+//     lis.addEventListener("dragover", dragOver);
+//     lis.addEventListener("dragenter", dragEnter);
+//     lis.addEventListener("dragleave", dragLeave);
+//     lis.addEventListener("drop", dragDrop);
+// }
 
+
+lis.forEach(li => {
+    li.addEventListener("dragstart", dragStart)
+    li.addEventListener("dragend", dragEnd)
+})
+
+uls.forEach(ul => {
+    ul.addEventListener("dragover", dragOver);
+    ul.addEventListener("dragenter", dragEnter);
+    ul.addEventListener("dragleave", dragLeave);
+    ul.addEventListener("drop", dragDrop);
+})
+
+
+let dragItem = null
 
 // 3.ドラッグ関数
 function dragStart() {
     console.log("start");
-    li.className += " hold";
+    this.className += " hold";
+
+    dragItem = this
     
     setTimeout(() => {
-        li.className = " invisible"
+        this.className = " invisible"
     }, 0);
 }
 
 function dragEnd() {
     console.log("end");
-    li.className = "list-item";
+    this.className = "list-item";
+    dragItem = null
 }
 
 function dragOver(e) {
@@ -134,7 +163,13 @@ function dragLeave() {
 function dragDrop() {
     console.log("drop");
     this.className = "task-list"
-    this.appendChild(li)
+    this.append(dragItem)
+
+    saveList()
+}
+
+function saveList() {
+    
 }
 
 
