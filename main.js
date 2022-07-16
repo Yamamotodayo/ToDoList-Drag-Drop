@@ -143,6 +143,8 @@ function dragEnd() {
     console.log("end");
     this.className = "list-item";
     dragItem = null
+
+    saveList()
 }
 
 function dragOver(e) {
@@ -164,12 +166,9 @@ function dragDrop() {
     console.log("drop");
     this.className = "task-list"
     this.append(dragItem)
-
-    saveList()
 }
 
 function saveList() {
-    
 }
 
 
